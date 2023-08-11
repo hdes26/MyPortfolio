@@ -1,0 +1,243 @@
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9,
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9 input[type=checkbox],
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9 label,
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9 label:after,
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9 label:before {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    border-radius: var(--size);
+    border: 0;
+    transition: .35s ease-in-out;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9 input[type=checkbox] {
+    position: absolute;
+    z-index: 1;
+    width: calc(.8 * var(--size));
+    height: calc(.8 * var(--size));
+    top: calc(.1 * var(--size));
+    left: calc(.1 * var(--size));
+    background: linear-gradient(45deg, #dedede, #fff);
+    box-shadow: 0 6px 7px rgba(0, 0, 0, .3);
+    outline: none;
+    margin: 0;
+}
+
+.ThemeCard_checkbox-wrapper-5__30E_2 .ThemeCard_check__UYQD9 label {
+    width: calc(2.2 * var(--size));
+    height: var(--size);
+    background: #d7d7d7;
+    overflow: hidden;
+}
+
+.toggle {
+    height: 50px;
+    width: 100px;
+    border-radius: 50px;
+    margin: auto;
+    background-image: linear-gradient(aqua, skyblue);
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle.night {
+    background-image: linear-gradient(midnightblue, rebeccapurple);
+}
+
+.notch {
+    height: 40px;
+    width: 39px;
+    border-radius: 50%;
+    background: yellow;
+    position: absolute;
+    top: 5px;
+    left: 6px;
+    box-shadow: 0 0 5px yellow;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.notch>.crater {
+    background: burlywood;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 0;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.4) inset;
+}
+
+.night .crater {
+    opacity: 0.4;
+}
+
+.crater:first-child {
+    left: 2px;
+    top: 7px;
+    height: 5px;
+    width: 17px;
+    transform: rotate(-45deg);
+}
+
+.crater:last-child {
+    right: 2px;
+    top: 8px;
+    height: 7px;
+    width: 12px;
+    transform: rotate(45deg);
+}
+
+.night>.notch {
+    background: whitesmoke;
+    box-shadow: 0 0 5px whitesmoke;
+    transform: translate(70px, 0);
+    height: 40px;
+    width: 39px;
+    border-radius: 50%;
+    background: whitesmoke;
+    position: absolute;
+    top: 5px;
+    left: -14px;
+    box-shadow: 0 0 5px yellow;
+    z-index: 1;
+    transition: all 0.3s ease;
+}
+
+.shape {
+    position: absolute;
+    background: whitesmoke;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.shape.sm {
+    height: 3px;
+    width: 31px;
+    top: 45%;
+    left: 67%;
+}
+
+.shape.md {
+    height: 6px;
+    width: 47px;
+    top: 25%;
+    left: 26%;
+    z-index: 2;
+}
+
+.shape.lg {
+    height: 7px;
+    width: 53px;
+    bottom: 15px;
+    left: 25%;
+}
+
+.night .shape {
+    background: lightgray;
+    box-shadow: 0 0 10px 2px violet;
+}
+
+.night .shape.sm {
+    height: 5px;
+    width: 5px;
+    transform: translate(-20px, 0);
+}
+
+.night .shape.sm:first-of-type {
+    transform: translate(-60px, -10px);
+}
+
+.night .shape.md {
+    height: 10px;
+    width: 10px;
+    transform: translate(5px, 0);
+}
+
+.night .shape.lg {
+    height: 15px;
+    width: 15px;
+    transform: translate(-10px, 0);
+}
+
+
+
+@media (min-width: 500px) {
+    .toggle {
+        height: 68px;
+        width: 141px;
+        border-radius: 50px;
+        margin: auto;
+        background-image: linear-gradient(aqua, skyblue);
+        position: relative;
+        cursor: pointer;
+    }
+
+    .notch {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: yellow;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        box-shadow: 0 0 5px yellow;
+        z-index: 1;
+        transition: all 0.3 ease;
+    }
+
+    .night>.notch {
+        background: whitesmoke;
+        box-shadow: 0 0 5px whitesmoke;
+        transform: translate(70px, 0);
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: whitesmoke;
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        box-shadow: 0 0 5px yellow;
+        z-index: 1;
+        transition: all 0.3s ease;
+    }
+
+    .crater:first-child {
+        left: 2px;
+        top: 13px;
+        height: 12px;
+        width: 30px;
+        transform: rotate(-45deg);
+    }
+
+    .crater:last-child {
+        right: 4px;
+        top: 12px;
+        height: 11px;
+        width: 19px;
+        transform: rotate(45deg);
+    }
+
+    .shape.sm {
+        height: 3px;
+        width: 36px;
+        top: 45%;
+        left: 60%;
+    }
+
+    .shape.md {
+        height: 8px;
+        width: 55px;
+        top: 25%;
+        left: 26%;
+        z-index: 2;
+    }
+
+    .shape.lg {
+        height: 10px;
+        width: 72px;
+        bottom: 15px;
+        left: 25%;
+    }
+}

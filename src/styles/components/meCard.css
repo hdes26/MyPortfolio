@@ -1,0 +1,39 @@
+
+@keyframes fadeInFromBottom {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(-7%);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.me-image-in {
+    animation: fadeInFromBottom 0.4s ease-in-out;
+}
+
+@keyframes fadeOutFromBottom {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+        bottom: -8rem;
+    }
+
+    to {
+        opacity: 0;
+        transform: translateY(100%);
+        bottom: 0;
+    }
+}
+
+.me-image-out {
+    animation: fadeOutFromBottom 0.2s ease-in-out;
+}

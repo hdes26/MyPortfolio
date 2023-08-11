@@ -1,6 +1,5 @@
 'use client'
 import { MainContainer } from '@/components/containers'
-import { Analytics } from '@vercel/analytics/react'
 
 export default function HomeLayout ({
   children
@@ -12,12 +11,9 @@ export default function HomeLayout ({
     <MainContainer>
       {
         (currentTheme) => (
-          <>
-            <main className={`${currentTheme ? 'bg-[#f7f2f2]' : 'bg-gray-800'} flex w-full h-full flex-col p-5 -z-10`}>
-              {children}
-            </main>
-            <Analytics />
-          </>
+          <main className={`${currentTheme ? 'bg-[#f7f2f2]' : 'bg-gray-800'} flex w-full h-full flex-col p-5 -z-10`}>
+            {children}
+          </main>
         )
       }
     </MainContainer>

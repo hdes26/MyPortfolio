@@ -2,7 +2,7 @@
 <br />
 <p align="center">
   <a href="your_website_url">
-    <img src="/me.png" alt="Logo" width="80" height="80">
+    <img src="public/me.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Welcome to My Personal Website</h3>

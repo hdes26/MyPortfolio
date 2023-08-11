@@ -1,5 +1,6 @@
 import '@/styles/globals.css'
 import { Providers } from '@/redux/providers'
+
 export default function RootLayout ({
   children
 }: {

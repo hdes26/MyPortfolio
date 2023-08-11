@@ -1,0 +1,24 @@
+@keyframes swing {
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(-30deg);
+    }
+
+    50% {
+        transform: rotate(30deg);
+    }
+
+    75% {
+        transform: rotate(-30deg);
+    }
+}
+
+
+.hover\:animate-swing:hover>div>div>div>span>img {
+    animation: swing 2s ease-in-out infinite;
+}

@@ -1,7 +1,7 @@
 import '@/styles/components/meCard.css'
-import Image from 'next/image'
 import { useState } from 'react'
 import { LanguageContainer, ThemeContainer } from './containers'
+import Image from 'next/image'
 import { MeCardContent } from './ui'
 
 export const MeCard: React.FC = () => {

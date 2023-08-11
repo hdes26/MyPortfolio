@@ -1,3 +1,4 @@
+import { Providers } from '@/redux/providers'
 import '@/styles/globals.css'
 export default function RootLayout ({
   children
@@ -10,7 +11,9 @@ export default function RootLayout ({
         <title>Hernan Escorcia | Full stack developer</title>
       </head>
       <body suppressHydrationWarning>
-        {children}
+        <Providers>
+          {children}
+        </Providers>
       </body>
     </html>
   )

@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 export const spotifyApi = createApi({
   reducerPath: 'spotifyApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:3000'
+    baseUrl: process.env.REACT_APP_API_BASE_URL
   }),
   endpoints: (builder) => ({
     getRecentlyPlayed: builder.query<Data, null>({

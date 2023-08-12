@@ -1,8 +1,8 @@
 import Image from 'next/image'
 import useSWR from 'swr'
-import { PlayAudio } from './ui/PlayAudio'
 import { LanguageContainer, SelectContainer } from './containers'
 import { getRecentlyPlayed, recentlyPlayedUrl } from '@/services/spotify'
+import { useRef, useState } from 'react'
 
 export const SpotifyCard: React.FC = () => {
   const { data } = useSWR(recentlyPlayedUrl, getRecentlyPlayed)
@@ -69,6 +69,42 @@ export const SpotifyCard: React.FC = () => {
         )
       }
     </SelectContainer>
+
+  )
+}
+
+export const PlayAudio: React.FC<{previewUrl: string | undefined}> = ({ previewUrl }: {previewUrl: string | undefined}) => {
+  const [play, setPlay] = useState(false)
+  const handlePlayAudio = () => {
+    if (audioElem.current) {
+      play ? audioElem.current.pause() : audioElem.current.play()
+      setPlay(!play)
+    }
+  }
+  const handleAudioEnded = () => {
+    setPlay(false)
+  }
+
+  const audioElem = useRef<HTMLAudioElement | null>(null)
+  return (
+
+    <div id='audiovisual' onClick={handlePlayAudio} className='flex h-5 w-min justify-center items-center cursor-pointer mt-1'>
+      <div className=' text-white text-xl'>
+        <svg stroke='currentColor' fill='currentColor' strokeWidth='0' viewBox='0 0 16 16' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'>
+          <path d='m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z' />
+        </svg>
+      </div>
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrink shrink' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrinkAlternative shrinkAlternative' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrink shrink' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrink shrink' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrinkAlternative shrinkAlternative' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrink shrink' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrink shrink' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrink shrink' : ''}`} />
+      <div className={`h-1/2 mt-0 mr-1 pt-0 pr-1 bg-white rounded-2xl ${play ? 'animate-shrinkAlternative shrinkAlternative' : ''}`} />
+      <audio src={previewUrl} id='music' ref={audioElem} onEnded={handleAudioEnded} />
+    </div>
 
   )
 }

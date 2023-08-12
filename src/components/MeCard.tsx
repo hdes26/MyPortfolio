@@ -1,13 +1,11 @@
-import '@/styles/components/meCard.css'
 import { useState } from 'react'
-import { LanguageContainer, SelectContainer, ThemeContainer } from './containers'
 import Image from 'next/image'
+import { LanguageContainer, SelectContainer, ThemeContainer } from './containers'
 import { MeCardContent } from './ui'
+import styles from '@/styles/components/meCard.module.css'
 
 export const MeCard: React.FC = () => {
   const [showImages, setShowImages] = useState(true)
-  const imageClassName = showImages ? 'me-image-out -bottom-20 md:-bottom-full' : 'me-image-in -bottom-20 md:-bottom-32'
-
   const toggleImageVisibility = () => {
     setShowImages(prevShowImages => !prevShowImages)
   }
@@ -33,7 +31,8 @@ export const MeCard: React.FC = () => {
                       height={0}
                       width={0}
                       sizes='full'
-                      className={`${imageClassName} absolute md:-right-1/4 -right-10 w-2/3 md:h-full md:auto object-cover -z-0 md:flex`}
+                      className={`${showImages ? styles.onMouseLeave : styles.onMouseEnter} 
+                                  absolute md:-right-1/4 -right-10 w-2/3 md:h-full md:auto object-cover -z-0 md:flex`}
                       placeholder='blur'
                       blurDataURL='/me.png'
                     />

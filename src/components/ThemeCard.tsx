@@ -1,5 +1,5 @@
 import '@/styles/components/themeCard.css'
-import { Toggle } from './ui/Toggle'
+import { Toggle } from './ui/ToggleComponent'
 import { SelectContainer, ThemeContainer } from './containers'
 
 export const ThemeCard: React.FC = () => {

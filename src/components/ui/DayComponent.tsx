@@ -40,7 +40,9 @@ export const DayComponent: React.FC = () => {
         <p className='capitalize text-xs md:text-2xl lg:text-2xl font-semibold lg:mb-0'>{ski}</p>
         <p className='text-xs md:text-lg lg:text-xl'>{currentHour}</p>
         <p className='text-xs md:text-lg lg:text-xl'>{`${city}, ${country}`}</p>
-        <Sun />
+        <div className='absolute right-0 top-0 flex justify-end pr-5 z-0 items-center w-full h-full overflow-hidden'>
+          <Sun />
+        </div>
       </div>
     </div>
 

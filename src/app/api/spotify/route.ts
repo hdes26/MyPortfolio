@@ -8,11 +8,15 @@ const api = new SpotifyWebApi({
 })
 
 export async function GET () {
-  api.setRefreshToken(process.env.NEXT_SPOTIFY_REFRESH_TOKEN as string)
-  const data = await api.refreshAccessToken()
-  api.setAccessToken(data.body.access_token)
-  const recentTracks = await api.getMyRecentlyPlayedTracks({
-    limit: 1
-  })
-  return NextResponse.json(recentTracks.body.items[0].track)
+  try {
+    api.setRefreshToken(process.env.NEXT_SPOTIFY_REFRESH_TOKEN as string)
+    const data = await api.refreshAccessToken()
+    api.setAccessToken(data.body.access_token)
+    const recentTracks = await api.getMyRecentlyPlayedTracks({
+      limit: 1
+    })
+    return NextResponse.json(recentTracks.body.items[0].track)
+  } catch (error) {
+    console.error(error)
+  }
 }

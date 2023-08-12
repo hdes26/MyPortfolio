@@ -2,7 +2,8 @@ import Image from 'next/image'
 import { LanguageContainer, ThemeContainer } from './containers'
 import { ProjectCardContent } from './ui'
 import { SelectContainer } from './containers/SelectContainer'
-
+import codingOne from '@/assets/coding.gif'
+import codingTwo from '@/assets/coding2.gif'
 export const ProjectCard = () => {
   return (
     <SelectContainer>
@@ -31,14 +32,12 @@ export const ProjectCard = () => {
                       <ProjectCardContent currentLanguage={currentLanguage} />
                       <div className='w-full h-full bg-[#1c053a9c] dark:bg-[#af72ff56] absolute'>
                         <Image
-                          src={currentTheme ? '/coding2.gif' : '/coding.gif'}
+                          src={currentTheme ? codingTwo : codingOne}
                           width={0}
                           height={0}
                           alt='coding'
                           priority
                           className='w-full h-full object-cover opacity-40'
-                          placeholder='blur'
-                          blurDataURL={currentTheme ? '/coding2.gif' : '/coding.gif'}
                         />
                       </div>
                     </a>

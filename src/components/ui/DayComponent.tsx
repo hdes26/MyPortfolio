@@ -8,10 +8,8 @@ import { Data } from '@/types/weather'
 
 export const DayComponent: React.FC = () => {
   const currentHour = getCurrentHour()
-  const { data: weatherData, isLoading, error } = useSWR(weatherUrl, getWeather)
+  const { data: weatherData, isLoading } = useSWR(weatherUrl, getWeather)
   const data = weatherData as Data
-  if (isLoading) return <p>Loading...</p>
-  if (error) return <p>Some error occurred</p>
 
   const temp = data?.main.temp.toFixed()
   const ski = data?.weather[0].main || ''

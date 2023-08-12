@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { LanguageContainer, SelectContainer } from './containers'
+import giphy from '@/assets/giphy.gif'
 
 export const GithubCard: React.FC = () => {
   return (
@@ -11,14 +12,12 @@ export const GithubCard: React.FC = () => {
             <a href='https://github.com/hdes26' target='_blank' className={`${currentSelect === 'home' || currentSelect === 'about' ? 'opacity-100' : ' opacity-20'} rounded-3xl col-span-2 overflow-hidden cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out`}>
               <div className='relative w-full h-full p-4 md:p-8 bg-[#00000077]'>
                 <Image
-                  src='/giphy.gif'
+                  src={giphy}
                   priority
                   width={0}
                   height={0}
                   alt='rat'
                   className='absolute w-full h-full object-cover object-center top-0 left-0 -z-10'
-                  placeholder='blur'
-                  blurDataURL='/giphy.gif'
                 />
                 <svg aria-label='redirectrow' stroke='currentColor' fill='currentColor' strokeWidth='0' viewBox='0 0 24 24' className='absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]' height='1em' width='1em' xmlns='http://www.w3.org/2000/svg'><path fill='none' d='M0 0h24v24H0z' /><path d='M19 19H5V5h7V3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-7z' /></svg>
                 <div className='w-full h-full flex flex-col justify-between'>

@@ -1,7 +1,9 @@
 import '@/styles/components/mapCard.css'
 import Image from 'next/image'
 import { SelectContainer, ThemeContainer } from './containers'
-
+import mapDay from '@/assets/map-day.png'
+import mapNight from '@/assets/map-night.png'
+import meImg from '@/assets/me.png'
 export const MapCard: React.FC = () => {
   return (
     <SelectContainer>
@@ -11,31 +13,29 @@ export const MapCard: React.FC = () => {
             {(currentTheme) => (
               <a
                 href='https://maps.apple.com/?address=Barranquilla' target='_blank'
-                className={`${currentSelect === 'home' || currentSelect === 'about' ? 'opacity-100' : ' opacity-20'} hover:animate-swing relative aspect-square top-0 left-0 flex flex-col justify-center items-center rounded-3xl overflow-hidden col-span-2 row-span-2 md:row-span-1 md:col-span-1 hover:scale-[103%] transition duration-500 ease-in-out shadow-sm cursor-pointer`}
+                className={`${currentSelect === 'home' || currentSelect === 'about' ? 'opacity-100' : ' opacity-20'} hover:animate-swing relative 
+                          aspect-square top-0 left-0 flex flex-col justify-center items-center rounded-3xl overflow-hidden col-span-2 row-span-2 
+                          md:row-span-1 md:col-span-1 hover:scale-[103%] transition duration-500 ease-in-out shadow-sm cursor-pointer`}
               >
                 <Image
-                  src={currentTheme ? '/map-day.png' : '/map-night.png'}
+                  src={currentTheme ? mapDay : mapNight}
                   priority
                   sizes='full'
                   fill
                   alt='map'
                   className='absolute w-full h-full object-cover object-center top-0 left-0 -z-10'
-                  placeholder='blur'
-                  blurDataURL={currentTheme ? '/map-day.png' : '/map-night.png'}
                 />
                 <div className='flex w-full h-min justify-center p-4 md:p-8'>
                   <div className='bg-white/10 backdrop-blur-lg backdrop-saturate-150 backdrop-filter rounded-full p-4 border-4 w-min'>
                     <div className='relative h-24 w-24 transform-none'>
                       <span className='box-border block overflow-hidden w-auto h-auto bg-none opacity-100 border-0 m-0 p-0 absolute top-0 left-0 bottom-0 right-0'>
                         <Image
-                          src='/me.png'
+                          src={meImg}
                           priority
                           fill
                           sizes='full'
                           alt='mecircle'
                           className='absolute top-0 left-0 bottom-0 right-0 box-border p-0 border-0 rounded-full m-auto block w-0 h-0 min-w-full max-w-full min-h-full max-h-full'
-                          placeholder='blur'
-                          blurDataURL='/me.png'
                         />
                       </span>
                     </div>

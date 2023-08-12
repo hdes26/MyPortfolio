@@ -13,7 +13,7 @@ export const DayComponent: React.FC = () => {
   const data = weatherData as Data
 
   const temp = data?.main.temp.toFixed()
-  const ski = data?.weather[0].main || ''
+  const description = data?.weather[0].main || ''
   const country = data?.sys.country || ''
   const city = data?.name || ''
   const icon = data?.weather[0].icon || ''
@@ -29,26 +29,32 @@ export const DayComponent: React.FC = () => {
     <div className='bg-[#089cffa4] w-full flex overflow-hidden bg-clip-padding text-white py-2 px-4 md:p-4 lg:p-8 transition-all duration-500 ease-in-out'>
       <div className={`flex-col justify-center lg:h-full w-2/3 absolute lg:static z-10 ${isLoading ? 'hidden' : 'flex'}`}>
         <div className='flex items-center'>
-          <p className='text-lg md:text-6xl lg:text-7xl font-bold'>{temp + '°'}</p>
-          {!isLoading && (
-            <Image
-              src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-              alt='cloud'
-              height={0}
-              width={0}
-              sizes='full'
-              className='w-5 h-5 md:w-10 md:h-10 lg:w-20 lg:h-20 text-transparent'
-              placeholder='blur'
-              blurDataURL={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-            />
-          )}
+          <p className='text-lg md:text-6xl lg:text-7xl font-bold'>
+            {temp + '°'}
+          </p>
+          <Image
+            src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+            width={100}
+            height={100}
+            className='w-5 h-5 md:w-10 md:h-10 lg:w-20 lg:h-20'
+            draggable='false'
+            alt=''
+          />
         </div>
-        <p className='capitalize text-xs md:text-2xl lg:text-2xl font-semibold lg:mb-0'>{ski}</p>
+        <p className='capitalize text-xs md:text-2xl lg:text-2xl font-semibold lg:mb-0'>
+          {description}
+        </p>
         <p className='text-xs md:text-lg lg:text-xl'>{time}</p>
-        <p className='text-xs md:text-lg lg:text-xl'>{`${city}, ${country}`}</p>
-        <div className='absolute right-0 top-0 flex justify-end pr-5 z-0 items-center w-full h-full overflow-hidden'>
-          <Sun />
-        </div>
+        <p className='text-xs md:text-lg lg:text-xl'>
+          {city + ', ' + country}
+        </p>
+      </div>
+      <div
+        className={`absolute right-0 top-0 flex z-0 items-center w-full h-full overflow-hidden ${
+        isLoading ? 'justify-center' : 'justify-end pr-5'
+      }`}
+      >
+        <Sun />
       </div>
     </div>
 

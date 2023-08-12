@@ -1,14 +1,11 @@
 import useSWR from 'swr'
-import { getWeather, weatherUrl } from '@/services/weather'
-import { getCurrentHour } from '@/utils/colombiaCurrentHour'
 import Image from 'next/image'
-
 import styles from '@/styles/components/timeCard.module.css'
+import { getWeather, weatherUrl } from '@/services/weather'
 import { Data } from '@/types/weather'
-import { useEffect, useState } from 'react'
+import { useGetCurrentHour } from '@/hooks/useGetCurrentHour'
 
 export const DayComponent: React.FC = () => {
-  const [time, setTime] = useState('')
   const { data: weatherData, isLoading } = useSWR(weatherUrl, getWeather)
   const data = weatherData as Data
 
@@ -18,12 +15,7 @@ export const DayComponent: React.FC = () => {
   const city = data?.name || ''
   const icon = data?.weather[0].icon || ''
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(getCurrentHour())
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
+  const { time } = useGetCurrentHour()
 
   return (
     <div className='bg-[#089cffa4] w-full flex overflow-hidden bg-clip-padding text-white py-2 px-4 md:p-4 lg:p-8 transition-all duration-500 ease-in-out'>

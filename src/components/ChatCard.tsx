@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import meImg from '@/assets/me.png'
 
 export const ChatCard: React.FC = () => {
   return (
@@ -9,14 +10,12 @@ export const ChatCard: React.FC = () => {
       </span>
       <span className='w-2/3 h-2/3 bg-[#0E1922] rounded-full hover:animate-pulse overflow-hidden'>
         <Image
-          src='/me.png'
+          src={meImg}
           alt='myimg'
           width={0}
           height={0}
           sizes='full'
           className='w-full h-full'
-          placeholder='blur'
-          blurDataURL='/me.png'
         />
       </span>
     </div>

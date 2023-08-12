@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { LanguageContainer, SelectContainer, ThemeContainer } from './containers'
 import { MeCardContent } from './ui'
 import styles from '@/styles/components/meCard.module.css'
+import meImg from '@/assets/me.png'
 
 export const MeCard: React.FC = () => {
   const [showImages, setShowImages] = useState(true)
@@ -25,7 +26,7 @@ export const MeCard: React.FC = () => {
                   >
                     <div className='m-auto relative w-full h-full opacity-50' />
                     <Image
-                      src='/me.png'
+                      src={meImg}
                       alt='Hernan Escorcia'
                       priority
                       height={0}
@@ -33,8 +34,6 @@ export const MeCard: React.FC = () => {
                       sizes='full'
                       className={`${showImages ? styles.onMouseLeave : styles.onMouseEnter} 
                                   absolute md:-right-1/4 -right-10 w-2/3 md:h-full md:auto object-cover -z-0 md:flex`}
-                      placeholder='blur'
-                      blurDataURL='/me.png'
                     />
                     <MeCardContent currentLanguage={currentLanguage} />
                   </div>

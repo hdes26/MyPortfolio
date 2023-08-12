@@ -4,10 +4,12 @@ import { getCurrentHour } from '@/utils/colombiaCurrentHour'
 import Image from 'next/image'
 
 import styles from '@/styles/components/timeCard.module.css'
+import { Data } from '@/types/weather'
 
 export const DayComponent: React.FC = () => {
   const currentHour = getCurrentHour()
-  const { data, isLoading, error } = useSWR(weatherUrl, getWeather)
+  const { data: weatherData, isLoading, error } = useSWR(weatherUrl, getWeather)
+  const data = weatherData as Data
   if (isLoading) return <p>Loading...</p>
   if (error) return <p>Some error occurred</p>
 

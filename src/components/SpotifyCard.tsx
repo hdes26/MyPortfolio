@@ -3,14 +3,16 @@ import useSWR from 'swr'
 import { LanguageContainer, SelectContainer } from './containers'
 import { getRecentlyPlayed, recentlyPlayedUrl } from '@/services/spotify'
 import { useRef, useState } from 'react'
+import { Track } from '@/types/spotify'
 
 export const SpotifyCard: React.FC = () => {
   const { data } = useSWR(recentlyPlayedUrl, getRecentlyPlayed)
-  const trackName: string | undefined = data?.name || ''
-  const trackPreviewUrl: string | undefined = data?.preview_url || ''
-  const trackImg: string = data?.album.images[0]?.url || ''
-  const artistName: string | undefined = data?.artists[0]?.name || ''
-  const spotifyLink = data?.external_urls.spotify || ''
+  const track = data as Track
+  const trackName: string | undefined = track?.name || ''
+  const trackPreviewUrl: string | undefined = track?.preview_url || ''
+  const trackImg: string = track?.album.images[0]?.url || ''
+  const artistName: string | undefined = track?.artists[0]?.name || ''
+  const spotifyLink = track?.external_urls.spotify || ''
 
   return (
     <SelectContainer>

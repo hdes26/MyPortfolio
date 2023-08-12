@@ -1,13 +1,10 @@
 import useSWR from 'swr'
-import { getWeather, weatherUrl } from '@/services/weather'
-import { getCurrentHour } from '@/utils/colombiaCurrentHour'
 import Image from 'next/image'
-
 import styles from '@/styles/components/timeCard.module.css'
-import { useEffect, useState } from 'react'
+import { getWeather, weatherUrl } from '@/services/weather'
+import { useGetCurrentHour } from '@/hooks/useGetCurrentHour'
 
 export const NightComponent: React.FC = () => {
-  const [time, setTime] = useState('')
   const { data, isLoading } = useSWR(weatherUrl, getWeather)
 
   const temp = data?.main.temp.toFixed() || ''
@@ -16,30 +13,22 @@ export const NightComponent: React.FC = () => {
   const city = data?.name || ''
   const icon = data?.weather[0]?.icon || ''
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTime(getCurrentHour())
-    }, 1000)
-    return () => clearInterval(interval)
-  }, [])
+  const { time } = useGetCurrentHour()
   return (
     <div className='bg-[#001324] w-full flex overflow-hidden bg-clip-padding text-white py-2 px-4 lg:p-8'>
-      <div className='flex flex-col justify-center lg:h-full w-2/3 absolute lg:static z-10'>
+      <div className={`flex flex-col justify-center lg:h-full w-2/3 absolute lg:static z-10 ${isLoading ? 'hidden' : 'flex'}`}>
         <div className='flex items-center'>
           <p className='text-lg md:text-5xl lg:text-7xl font-bold'>
             {temp + '°'}
           </p>
-          {!isLoading &&
-            <Image
-              src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-              width={100}
-              height={100}
-              className='w-5 h-5 lg:w-20 lg:h-20'
-              draggable='false'
-              alt=''
-              placeholder='blur'
-              blurDataURL={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-            />}
+          <Image
+            src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+            width={100}
+            height={100}
+            className='w-5 h-5 lg:w-20 lg:h-20'
+            draggable='false'
+            alt=''
+          />
         </div>
         <p className='capitalize text-xs md:text-xl lg:text-2xl font-semibold lg:mb-0'>
           {ski}

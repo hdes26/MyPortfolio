@@ -9,16 +9,10 @@ type Album = {
 type Artists = {
     name: string;
 }
-type Track = {
+export type Track = {
     album: Album;
     artists: Artists[];
     external_urls: { spotify: string };
     preview_url: string;
     name:string;
-}
-type Item = {
-    track: Track;
-}
-export type Data = {
-    items: Item[];
 }

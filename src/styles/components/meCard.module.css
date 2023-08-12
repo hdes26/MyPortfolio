@@ -1,4 +1,17 @@
 
+
+.onMouseEnter {
+    bottom: -5rem;
+    animation: fadeInFromBottom 0.4s ease-in-out;
+}
+
+.onMouseLeave {
+    bottom: -5rem;
+    animation: fadeOutFromBottom 0.2s ease-in-out;
+    
+}
+
+
 @keyframes fadeInFromBottom {
     from {
         opacity: 0;
@@ -16,9 +29,6 @@
     }
 }
 
-.me-image-in {
-    animation: fadeInFromBottom 0.4s ease-in-out;
-}
 
 @keyframes fadeOutFromBottom {
     from {
@@ -34,6 +44,13 @@
     }
 }
 
-.me-image-out {
-    animation: fadeOutFromBottom 0.2s ease-in-out;
+@media (min-width: 768px) {
+    .onMouseLeave {
+        bottom: -100%;
+    }
+}
+@media (min-width: 768px) {
+    .onMouseEnter {
+        bottom: -8rem
+    }
 }

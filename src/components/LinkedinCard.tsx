@@ -8,7 +8,7 @@ export const LinkedinCard: React.FC = () => {
         (currentSelect) => (
           <a
             href={linkedinUrl}
-            className={`${currentSelect === 'home' || currentSelect === 'contact' ? 'opacity-100' : ' opacity-20'} flex flex-col justify-center items-center bg-[#1178ff9c] dark:bg-[#49a7ff56] rounded-3xl relative overflow-hidden
+            className={`${currentSelect === 'home' || currentSelect === 'contact' ? 'opacity-100' : 'opacity-20'} flex flex-col justify-center items-center bg-blue-500 rounded-3xl relative overflow-hidden
                         col-span-1 aspect-square shadow-sm cursor-pointer hover:scale-[103%] transition duration-300 ease-in-out`}
           >
             <svg
@@ -17,7 +17,7 @@ export const LinkedinCard: React.FC = () => {
               fill='currentColor'
               strokeWidth='0'
               viewBox='0 0 24 24'
-              className='absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white dark:text-[#ffffffaa]'
+              className='absolute right-4 bottom-4 top-auto md:right-8 md:top-8 text-xl text-white'
               height='1em'
               width='1em'
               xmlns='http://www.w3.org/2000/svg'
@@ -30,7 +30,7 @@ export const LinkedinCard: React.FC = () => {
               fill='currentColor'
               strokeWidth='0'
               viewBox='0 0 448 512'
-              className='text-4xl md:text-7xl lg:text-9xl text-white dark:text-[#ffffffaa]'
+              className='text-4xl md:text-7xl lg:text-9xl text-white'
               height='1em'
               width='1em'
               xmlns='http://www.w3.org/2000/svg'

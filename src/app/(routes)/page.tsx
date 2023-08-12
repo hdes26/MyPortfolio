@@ -1,7 +1,7 @@
 'use client'
 import {
   AgeCard, EmailCard, EnglishCard, ExperienceCard, GithubCard, InstagramCard,
-  LanguageCard, LinkedinCard, MapCard, MeCard, ProjectCard, SkillsCard, SpotifyCard, ThemeCard, WeatherCard
+  LanguageCard, LinkedinCard, MapCard, MeCard, ProjectCard, SkillsCard, SpotifyCard, ThemeCard, TimeCard
 } from '@/components'
 import { Navbar } from '@/components/Navbar'
 export default function HomePage () {
@@ -22,7 +22,7 @@ export default function HomePage () {
         <MapCard />
         <EmailCard />
         <InstagramCard />
-        <WeatherCard />
+        <TimeCard />
         <EnglishCard />
       </section>
     </>

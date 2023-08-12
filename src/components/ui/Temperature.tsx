@@ -1,19 +1,19 @@
 import React from 'react'
 import Image from 'next/image'
-import { useGetWeatherQuery } from '@/redux/services/weatherApi'
+import useSWR from 'swr'
 import { getCurrentHour } from '@/utils/colombiaCurrentHour'
+import { getWeather, weatherUrl } from '@/services/weather'
 
 interface TemperatureProps {}
 
 export const Temperature: React.FC<TemperatureProps> = () => {
   const currentHour = getCurrentHour()
 
-  const { data, error, isFetching, isLoading } = useGetWeatherQuery({ city: 'Barranquilla' })
-
-  if (isLoading || isFetching) return <p>Loading...</p>
+  const { data, isLoading, error } = useSWR(weatherUrl, getWeather)
+  if (isLoading) return <p>Loading...</p>
   if (error) return <p>Some error occurred</p>
 
-  const temp = data?.main.temp ? (data.main.temp - 273.15).toFixed() : '0'
+  const temp = data?.main.temp.toFixed()
   const ski = data?.weather[0].main || ''
   const country = data?.sys.country || ''
   const city = data?.name || ''
@@ -23,7 +23,7 @@ export const Temperature: React.FC<TemperatureProps> = () => {
     <div className='flex-col justify-center lg:h-full w-2/3 absolute lg:static z-10 flex'>
       <div className='flex items-center'>
         <p className='text-lg md:text-6xl lg:text-7xl font-bold'>{temp}°</p>
-        {!isFetching && !isLoading && (
+        {!isLoading && (
           <Image
             src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
             alt='cloud'

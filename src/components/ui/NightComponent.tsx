@@ -4,9 +4,10 @@ import { getCurrentHour } from '@/utils/colombiaCurrentHour'
 import Image from 'next/image'
 
 import styles from '@/styles/components/timeCard.module.css'
+import { useEffect, useState } from 'react'
 
 export const NightComponent: React.FC = () => {
-  const currentHour = getCurrentHour()
+  const [time, setTime] = useState('')
   const { data, isLoading } = useSWR(weatherUrl, getWeather)
 
   const temp = data?.main.temp.toFixed() || ''
@@ -14,6 +15,13 @@ export const NightComponent: React.FC = () => {
   const country = data?.sys.country || ''
   const city = data?.name || ''
   const icon = data?.weather[0]?.icon || ''
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(getCurrentHour())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
   return (
     <div className='bg-[#001324] w-full flex overflow-hidden bg-clip-padding text-white py-2 px-4 lg:p-8'>
       <div className='flex flex-col justify-center lg:h-full w-2/3 absolute lg:static z-10'>
@@ -36,7 +44,7 @@ export const NightComponent: React.FC = () => {
         <p className='capitalize text-xs md:text-xl lg:text-2xl font-semibold lg:mb-0'>
           {ski}
         </p>
-        <p className='text-xs md:text-md lg:text-xl'>{currentHour}</p>
+        <p className='text-xs md:text-md lg:text-xl'>{time}</p>
         <p className='text-xs md:text-md lg:text-xl'>
           {city + ', ' + country}
         </p>

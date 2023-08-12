@@ -5,9 +5,10 @@ import Image from 'next/image'
 
 import styles from '@/styles/components/timeCard.module.css'
 import { Data } from '@/types/weather'
+import { useEffect, useState } from 'react'
 
 export const DayComponent: React.FC = () => {
-  const currentHour = getCurrentHour()
+  const [time, setTime] = useState('')
   const { data: weatherData, isLoading } = useSWR(weatherUrl, getWeather)
   const data = weatherData as Data
 
@@ -16,6 +17,13 @@ export const DayComponent: React.FC = () => {
   const country = data?.sys.country || ''
   const city = data?.name || ''
   const icon = data?.weather[0].icon || ''
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTime(getCurrentHour())
+    }, 1000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className='bg-[#089cffa4] w-full flex overflow-hidden bg-clip-padding text-white py-2 px-4 md:p-4 lg:p-8 transition-all duration-500 ease-in-out'>
@@ -36,7 +44,7 @@ export const DayComponent: React.FC = () => {
           )}
         </div>
         <p className='capitalize text-xs md:text-2xl lg:text-2xl font-semibold lg:mb-0'>{ski}</p>
-        <p className='text-xs md:text-lg lg:text-xl'>{currentHour}</p>
+        <p className='text-xs md:text-lg lg:text-xl'>{time}</p>
         <p className='text-xs md:text-lg lg:text-xl'>{`${city}, ${country}`}</p>
         <div className='absolute right-0 top-0 flex justify-end pr-5 z-0 items-center w-full h-full overflow-hidden'>
           <Sun />

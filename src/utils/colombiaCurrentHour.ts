@@ -7,6 +7,6 @@ export const getCurrentHour = (): string => {
     hour12: true
   } as Intl.DateTimeFormatOptions
 
-  const hourFormat = new Intl.DateTimeFormat('es-CO', options)
+  const hourFormat = new Intl.DateTimeFormat('en-US', options)
   return hourFormat.format(currentDate)
 }

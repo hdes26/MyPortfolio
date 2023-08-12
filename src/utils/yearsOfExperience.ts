@@ -1,6 +1,6 @@
+import moment from 'moment'
+
 export const calculateYearsOfExperience = () => {
-  const startDateOfWork = new Date('2022-01-11')
-  const currentDate = new Date()
-  const yearsOfExperience = currentDate.getFullYear() - startDateOfWork.getFullYear()
-  return yearsOfExperience
+  const years = moment().diff(moment([2022, 1, 11]), 'years')
+  return years
 }

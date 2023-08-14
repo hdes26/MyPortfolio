@@ -1,8 +1,8 @@
-import { calculateAge } from '@/utils'
 import { LanguageContainer, SelectContainer } from './containers'
+import { useGetAge } from '@/hooks/useGetAge'
 
 export const AgeCard: React.FC = () => {
-  const age = calculateAge(new Date('2000-09-26'))
+  const { age } = useGetAge()
   return (
     <SelectContainer>
       {

@@ -1,9 +1,9 @@
-import { isDayColombia } from '@/utils'
 import { DayComponent, NightComponent } from './ui'
 import { SelectContainer } from './containers'
+import { useGetIsDayColombia } from '@/hooks/useGetIsDayColombia'
 
 export const TimeCard: React.FC = () => {
-  const isDay = isDayColombia()
+  const { isDay } = useGetIsDayColombia()
   return (
 
     <SelectContainer>
